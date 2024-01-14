@@ -10,6 +10,7 @@
                     <th class="py-2 px-4 border-b">Section</th>
                     <th class="py-2 px-4 border-b">Nombre total de taches</th>
                     <th class="py-2 px-4 border-b">Projets</th>
+                    <th class="py-2 px-4 border-b">Salaire</th>
                     <th class="py-2 px-4 border-b">Image</th>
                     <th class="py-2 px-4 border-b">Action</th>
                 </tr>
@@ -30,6 +31,7 @@
                                 Aucun projet attribué
                             @endforelse
                         </td>
+                        <td class="py-2 px-4 border-b">{{ $employee->salaire }}</td>
                         <td class="py-2 px-4 border-b flex justify-center">
                             <img src="{{ asset('storage/' . $employee->image) }}" alt="Employee Image"
                                 class="w-16 h-16">
