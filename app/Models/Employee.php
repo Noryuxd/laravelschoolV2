@@ -34,12 +34,14 @@ class Employee extends Model
   }
 
   public function calculerEtMettreAJourSalaire()
-  {
-    $nombreTaches = $this->taches()->count();
-    $salaireParTache = $this->taches()->avg('cout');
+{
+    $tachesTerminees = $this->taches()->where('etat', 'finie');
+
+    $nombreTaches = $tachesTerminees->count();
+    $salaireParTache = $tachesTerminees->avg('cout');
 
     $salaireTotal = $nombreTaches * $salaireParTache;
 
     $this->update(['salaire' => $salaireTotal]);
-  }
+}
 }

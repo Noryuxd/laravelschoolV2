@@ -77,6 +77,16 @@ class TacheController extends Controller
    */
   public function update(Request $request, string $id)
   {
+    $tache = Tache::find($id);
+    $tache->update([
+      'etat' => $request->input('etat'),
+    ]);
+
+    foreach ($tache->employes as $employee) {
+      $employee->calculerEtMettreAJourSalaire();
+    }
+
+    return redirect("/taches");
   }
 
   /**

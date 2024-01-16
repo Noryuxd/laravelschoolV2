@@ -32,8 +32,27 @@
                                 <button type="submit"
                                     class="bg-red-500 text-white py-1 px-2 rounded-full">Supprimer</button>
                             </form>
+                            @if ($tache->etat == 'en cours')
+                                <form method="POST" action="{{ route('taches.update', $tache->id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="etat" value="finie">
+                                    <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-full">Marquer
+                                        comme finie</button>
+                                </form>
+                            @else
+                                <form method="POST" action="{{ route('taches.update', $tache->id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="etat" value="en cours">
+                                    <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-full">Marquer
+                                        comme en cours</button>
+                                </form>
+                            @endif
+
 
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
